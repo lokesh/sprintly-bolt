@@ -1,0 +1,16 @@
+*.log
+*.sql
+*.sqlite
+
+*.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+.sass-cache
+
+.htaccess
+.ftppass
+.host_config
+
+bower_components
+node_modules

@@ -1,0 +1,9 @@
+{
+  "name": "Bolt",
+  "version": "0.0.1",
+  "dependencies": {
+    "marionette": "~2.2.0",
+    "text": "~2.0.12",
+    "requirejs": "~2.1.15"
+  }
+}
