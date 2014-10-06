@@ -8,7 +8,7 @@ define([
    
     // Methods for handling routing are in controller.js
     appRoutes: {
-      // 'item/:   item': 'showItem',
+      'dashboard/:item': 'showItem',
       'dashboard': 'showDashboard',
       '*action':   'showLogin'
     }

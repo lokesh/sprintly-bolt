@@ -9,11 +9,13 @@ define([
 
   app.addInitializer(function(options){
     app.addRegions({
-      'Content': '#content'
+      'Content': '#content',
+      'Modal':   '#modal'
     });
 
     var appController = new AppController({
-      contentRegion: app.Content
+      contentRegion: app.Content,
+      modalRegion: app.Modal
     });
 
     var appRouter = new AppRouter({
@@ -26,14 +28,15 @@ define([
 
     vent.on('data:fetched', function() {
       appController.showDashboard();
-      appRouter.navigate('/dashboard');
+      // appRouter.navigate('/dashboard');
     });
+
+    vent.on('item:show', function(item) {
+      appController.showItem(item);
+      // appRouter.navigate('dashboard/' + item.get('number'));
+    });
+
   });
   
-  // vent.on('item:show', function(item) {
-  //   appController.showItem(item);
-  //   appRouter.navigate('item/' + item.get('name'));
-  // });
-
   return app;
 });

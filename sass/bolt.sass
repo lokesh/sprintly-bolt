@@ -51,12 +51,13 @@ $baseline: 8px
 $scrollbar-width: 15px
 
 $item-column-width: 300px
-
+$item-modal-width: 800px
 
 //== Z-INDEX ===================================================================
 
 $z-items-list-heading: 50
-$z-items-statusbar: 100
+$z-items-statusbar:    100
+$z-modal-overlay:      250
 
 
 //== BASE ======================================================================
@@ -259,7 +260,7 @@ a
   font-weight: 300
 
 .item-title
-  padding-bottom: 4px
+  margin-bottom: 4px
   color: white
   font-size: 18px
   line-height: 1.25em
@@ -296,3 +297,47 @@ a
 
 .item-test
   +itemType($test-color)
+
+
+//== ITEM MODAL ================================================================
+
+.modal-overlay
+  position: absolute
+  z-index: $z-modal-overlay
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background-color: rgba(0, 0, 0, 0.8)
+
+.item-modal
+  padding: 32px
+  margin: 5% auto
+  max-width: $item-modal-width
+
+
+.item-score-modal
+  position: relative
+  top: -3px
+  width: 20px
+  height: 20px
+  padding-top: 3px
+  margin-right: 8px  
+  text-align: center
+  font-size: 14px
+
+.item-assignee-modal
+  font-size: 16px
+
+.item-number
+  font-size: 16px
+
+.item-title-modal
+  font-size: 32px
+  margin-bottom: 8px
+
+.item-description-modal
+  white-space: pre-line
+  margin-bottom: 16px
+  font-size: 18px
+  line-height: 1.5em

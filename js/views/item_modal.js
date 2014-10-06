@@ -5,14 +5,18 @@ define([
 ], function (Marionette, templates, vent) {
   
   return Marionette.ItemView.extend({
-    template: templates.item,
+    template: templates.itemModal,
 
-    events: {
-      'click .item': 'onClick'
+    ui: {
+      'overlay': '.modal-overlay'
     },
 
-    onClick: function(event) {
-      vent.trigger('item:show', this.model);
+    events: {
+      'click @ui.overlay': 'onOverlayClick'
+    },
+
+    onOverlayClick: function(event) {
+      this.destroy();
     }
 
   });

@@ -35,8 +35,8 @@ define([
             'limit': API_ITEMS_PER_REQUEST_LIMIT,
             'offset': offset,
             'order_by': 'newest',
-            'status': 'completed' // Not displaying ACCEPTED
-            // 'status': 'someday,backlog,in-progress,completed' // Not displaying ACCEPTED
+            // 'status': 'completed' // Not displaying ACCEPTED
+            'status': 'someday,backlog,in-progress,completed' // Not displaying ACCEPTED
           },
           beforeSend: function(xhr) {
             xhr.setRequestHeader('Authorization', 'Basic ' + btoa(config.username + ':' + config.password));

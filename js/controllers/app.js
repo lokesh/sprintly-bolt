@@ -6,14 +6,17 @@ define([
   'modules/vent',
   'views/dashboard',
   'views/item',
+  'views/item_modal',
   'views/login'
-], function (Marionette, Items, People, Tags, vent, DashboardView, ItemView, LoginView) {
+], function (Marionette, Items, People, Tags, vent, DashboardView, 
+  ItemView, ItemModalView, LoginView) {
  
   return Marionette.Controller.extend({
 
     initialize: function(options) {
       this.Content = options.contentRegion;
-    
+      this.Modal   = options.modalRegion;
+
       $(window).on('resize', this.onWindowResize);
     },
 
@@ -32,7 +35,10 @@ define([
     },
 
     showItem: function(item) {
-      console.log('showItem');
+      var itemModalView = new ItemModalView({
+        model: item
+      });
+      this.Modal.show(itemModalView);
     },
 
     fetchData: function() {

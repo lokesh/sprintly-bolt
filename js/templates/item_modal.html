@@ -1,0 +1,32 @@
+<div class="modal-overlay">
+
+  <div class="item-modal item-<%= type %> item-<%= status %>">
+    <div class="item-topbar">
+      <div class="item-score item-score-modal">
+        <%= score %>
+      </div>
+      <div class="item-assignee item-assignee-modal">
+        <% if (assigned_to){ %>
+          <%= assigned_to.first_name + ' ' + assigned_to.last_name %>
+        <% } %>
+      </div>
+      <div class="item-number item-number-modal">
+        #<%= number %>
+      </div>
+    </div>
+    <div class="item-title item-title-modal">
+      <%= title %>
+    </div>
+    <div class="item-description item-description-modal">
+      <%= description %>
+    </div>
+    <div class="item-bottombar">
+      <ul class="item-tags">
+        <% _.each(tags, function(tag){ %>
+          <li class="item-tag"><%= tag %></li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>
+
+</div>
