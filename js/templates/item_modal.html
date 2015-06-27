@@ -1,6 +1,6 @@
 <div class="modal-overlay">
 
-  <div class="item-modal item-<%= type %> item-<%= status %>">
+  <div class="item-modal item-<%= type %> item-<%= type %>-modal item-<%= status %> item-<%= status %>-modal">
     <div class="item-topbar">
       <div class="item-score item-score-modal">
         <%= score %>
@@ -10,9 +10,9 @@
           <%= assigned_to.first_name + ' ' + assigned_to.last_name %>
         <% } %>
       </div>
-      <div class="item-number item-number-modal">
+      <a class="item-number item-number-modal" href="https://sprint.ly/product/<%= product.id %>/item/<%= number %>">
         #<%= number %>
-      </div>
+      </a>
     </div>
     <div class="item-title item-title-modal">
       <%= title %>
@@ -28,5 +28,10 @@
       </ul>
     </div>
   </div>
+  <% _.each(children, function(child){ %>
+    <div class="item-modal">
+      CHILD
+    </div>
+  <% }); %>
 
 </div>

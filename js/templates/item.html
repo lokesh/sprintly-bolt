@@ -8,9 +8,9 @@
         <%= assigned_to.first_name + ' ' + assigned_to.last_name %>
       <% } %>
     </div>
-    <div class="item-number">
+    <a class="item-number" href="https://sprint.ly/product/<%= product.id %>/item/<%= number %>">
       #<%= number %>
-    </div>
+    </a>
   </div>
   <div class="item-title">
     <%= title %>

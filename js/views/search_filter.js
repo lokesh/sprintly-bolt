@@ -16,6 +16,7 @@ define([
     },
     
     onKeyup: _.debounce(function(event) {
+      console.log('keyup');
       this.trigger('searchChange', this.ui.input.val());
     }, 250)
 

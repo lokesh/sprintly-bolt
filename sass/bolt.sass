@@ -25,9 +25,9 @@ $task-color:   $gray-700
 $defect-color: $red
 $test-color:   #5081a7
 
-$base-color:      $gray-500
-$base-bg-color:   white
-$link-color: $light-blue
+$base-color:    $gray-500
+$base-bg-color: white
+$link-color:    $light-blue
 
 
 
@@ -48,6 +48,7 @@ $logo-font-family:    "Roboto Condensed", sans-serif
 //== LAYOUT ====================================================================
 
 $baseline: 8px
+$base-radius: 4px
 $scrollbar-width: 15px
 
 $item-column-width: 300px
@@ -209,7 +210,7 @@ a
 .items-column
   float: left
   width: $item-column-width
-  margin: 0 4px
+  background-color: $gray-900
 
 .items-list-heading
   position: absolute
@@ -228,13 +229,15 @@ a
 /* Items */
 
 .item
-  padding: 16px
+  margin: 8px
+  padding: 8px
+  +border-radius($base-radius)
   &:hover
     background-color: $gray-100 
     cursor: pointer
 
 .items-list > div > div:first-of-type .item // First item in list
-  padding-top: 42px
+  margin-top: 37px
 
 .item-topbar
   padding-bottom: 4px
@@ -256,19 +259,25 @@ a
   font-weight: 300
 
 .item-number
+  display: block
   float: right
   font-weight: 300
+  &:hover
+    text-decoration: underline
 
 .item-title
   margin-bottom: 4px
   color: white
-  font-size: 18px
+  font-size: 16px
   line-height: 1.25em
   
-.item-tags /* ul */
+/* ul */
+.item-tags
   display: inline-block
+  // display: none
 
-.item-tag /* li */
+/* li */
+.item-tag
   display: inline-block
   margin-right: 4px
   font-weight: 300
@@ -278,13 +287,20 @@ a
 // Item Types
 
 =itemType($color)
-  color: lighten($color, 25%)
+  color: lighten($color, 30%)
   background-color: $color
   &:hover
-    background-color: lighten($color, 3%)
+    color: lighten($color, 40%)
+    background-color: lighten($color, 5%)
+    .item-score
+      background-color: lighten($color, 40%)
+    .item-number
+      color: lighten($color, 40%)
   .item-score
     color: $color
-    background-color: lighten($color, 25%)
+    background-color: lighten($color, 30%)
+  .item-number
+    color: lighten($color, 30%)
 
 .item-story
   +itemType($story-color)
@@ -314,6 +330,9 @@ a
   padding: 32px
   margin: 5% auto
   max-width: $item-modal-width
+  +border-radius($base-radius)
+  &:hover
+    background-color: auto
 
 
 .item-score-modal
@@ -329,7 +348,7 @@ a
 .item-assignee-modal
   font-size: 16px
 
-.item-number
+.item-number-modal
   font-size: 16px
 
 .item-title-modal
@@ -337,7 +356,27 @@ a
   margin-bottom: 8px
 
 .item-description-modal
-  white-space: pre-line
   margin-bottom: 16px
+  white-space: pre-line
+  overflow-wrap: break-word
   font-size: 18px
   line-height: 1.5em
+
+// Modal Item Types
+
+=modalItemType($color)
+  color: lighten($color, 35%)
+  &:hover
+    background-color: $color
+
+.item-story-modal
+  +modalItemType($story-color)
+    
+.item-task-modal
+  +modalItemType($task-color)
+
+.item-defect-modal
+  +modalItemType($defect-color)
+
+.item-test-modal
+  +modalItemType($test-color)

@@ -35,6 +35,8 @@ define([
     },
 
     showItem: function(item) {
+      item.fetchChildren();
+
       var itemModalView = new ItemModalView({
         model: item
       });

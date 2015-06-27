@@ -1,11 +1,12 @@
 define([
   'marionette',
   'entities/filters',
+  'entities/items',
   'modules/templates',
   'modules/vent',
   'views/items_lists',
   'views/filters'
-], function (Marionette, Filters, templates, vent, ItemsListsView, FiltersView) {
+], function (Marionette, Filters, Items, templates, vent, ItemsListsView, FiltersView) {
   
   return Marionette.LayoutView.extend({
     template: templates.dashboard,
@@ -28,7 +29,7 @@ define([
       
       this.lunrIndex = this.items.createLunrIndex();
       
-      this.filteredItems = new Backbone.Collection(this.items.toJSON());
+      this.filteredItems = new Items(this.items.toJSON());
 
       this.itemsListsView = new ItemsListsView({
         collection: this.filteredItems

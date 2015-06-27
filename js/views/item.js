@@ -7,12 +7,22 @@ define([
   return Marionette.ItemView.extend({
     template: templates.item,
 
-    events: {
-      'click .item': 'onClick'
+    ui: {
+      'item':   '.item',
+      'number': '.item-number'
     },
 
-    onClick: function(event) {
+    events: {
+      'click @ui.item':   'onItemClick',
+      'click @ui.number': 'onNumberClick',
+    },
+
+    onItemClick: function(event) {
       vent.trigger('item:show', this.model);
+    },
+
+    onNumberClick: function(event) {
+      event.stopPropogation();
     }
 
   });

@@ -23,19 +23,18 @@ define([
       function fetchFromSprintly(offset) {
         offset = _.isUndefined(offset) ? 0: offset;
 
-        var API_RESOURCE_ITEMS          = '/products/' + config.PRODUCT_ID + '/items.json';
-        var API_ITEMS_PER_REQUEST_LIMIT = 100;
-        var url = config.API_BASE_URL + API_RESOURCE_ITEMS;
+        var itemsURL = '/products/' + config.PRODUCT_ID + '/items.json';
+        var url      = config.API_BASE_URL + itemsURL;
 
         return $.ajax({
           type: 'GET',
           async: false,
           url: url,
           data: {
-            'limit': API_ITEMS_PER_REQUEST_LIMIT,
+            'limit': config.API_ITEMS_PER_REQUEST_LIMIT,
             'offset': offset,
             'order_by': 'newest',
-            // 'status': 'completed' // Not displaying ACCEPTED
+            // 'status': 'backlog, in-progress'
             'status': 'someday,backlog,in-progress,completed' // Not displaying ACCEPTED
           },
           beforeSend: function(xhr) {
@@ -45,8 +44,8 @@ define([
         .done(function(data, status, xhr) {
 
           items = items.concat(data);
-          if (data.length === API_ITEMS_PER_REQUEST_LIMIT) {
-            fetchFromSprintly(offset + API_ITEMS_PER_REQUEST_LIMIT);
+          if (data.length === config.API_ITEMS_PER_REQUEST_LIMIT) {
+            fetchFromSprintly(offset + config.API_ITEMS_PER_REQUEST_LIMIT);
           } else {
             localStorage.setItem('items', JSON.stringify(items));
           }
